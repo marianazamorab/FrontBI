@@ -30,13 +30,16 @@ const Elegibilidad = () => {
             </div>
             </nav>
         <div className="container-fluid" id="contenedor">
-            <div className= "row d-flex justify-content-center">
+        <div className = "row">
+        <div className= "col-9">
+            <h4> Diagnósticos </h4>
+            <div className= "row" id="ladodiag">
                 {diagnosticos.map((diagnostico, index) => (
-                    <div className="card col-3" id="diag">
+                    <div className="card col-4" id="diag">
                      <div className="card-body">
                         <form autoComplete="off">
                             <div className="form-field">
-                            <h5 className="label"> Diagnostico </h5>
+                            <h5 className="label"> Diagnostico {index+1} </h5>
                             <div key={index}>
                                 <div className="row justify-content-center">
                                     <input name="diagnostico" type="text" id="diagnostico" required />
@@ -44,7 +47,7 @@ const Elegibilidad = () => {
                                         <button className="remove-btn" onClick= {() => eliminarDiagnostico(index)}> Eliminar </button>
                                     )}
                                     {diagnosticos.length -1 === index &&(
-                                        <button className="add-btn" onClick={agregarDiagnostico}> Agrega un diagnóstico</button>
+                                        <button className="add-btn" onClick={agregarDiagnostico}> + diagnóstico</button>
                                     )}
                                 </div>
                             </div>
@@ -52,7 +55,12 @@ const Elegibilidad = () => {
                     </form>
                 </div>
              </div>
-                ))}    
+                ))}
+          </div>    
+          </div>
+          <div className= "col-3">
+              <h4 id="resultados"> Resultados </h4>
+          </div>
           </div>
         </div>
         </div>
