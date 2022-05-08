@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link} from "react-router-dom";
-import logo1 from "./media/diagnostico.png";
 
 export default class Informacion extends React.Component {
   render() {
