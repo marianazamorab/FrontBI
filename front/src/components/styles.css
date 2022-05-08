@@ -16,18 +16,19 @@
 
 #info{
     background-color: #b2d3e1;
-    margin-top: 80px;
-    margin-left: 100px;
+    margin-top: 70px;
     text-align: center;
-    height: 400px;
+    height: 450px;
+    width: 450px;
 }
 
 #elegibilidad{
     background-color: #b2d3e1;
-    margin-top: 80px;
+    margin-top: 70px;
     margin-left: 20px;
     text-align: center;
-    height: 400px;
+    height: 450px;
+    width: 450px;
 }
 
 h1{
@@ -47,15 +48,14 @@ img{
     height: 40px;
     padding-top: 7px;
     font-weight: 480;
-
 }
 
 #cardinfo{
-    margin-top: 80px;
+    margin-top: 50px;
     background-color: #b2d3e1;
     text-align: center;
-    height: 400px;
-    margin-left: 400px;
+    height: 470px;
+    width: 450px;
 }
 
 #diag{
@@ -67,6 +67,7 @@ img{
 .card{
     background-color: #b2d3e1;
     height: 235px;
+    width: 300px;;
     text-align: center;
 }
 
@@ -103,12 +104,41 @@ label{
     margin-left: 35px;
 }
 
-h4{
+#rdiag{
+    margin-top: 10px;
+}
+
+#diagnosticos{
     padding-top: 20px;
     margin-left: 60px;
 }
 
 #resultados{
     padding-top: 20px;
-    margin-right: 80px;
+    margin-right: 200px;
+}
+
+.card-resultados{
+    margin-right: 50px;
+    height: 118px;
+    margin-top: 20px;
+    margin-bottom:5px;
+}
+
+#get{
+    background-color:#162942;
+    border-radius: 35px;
+    color: whitesmoke;
+    margin-top: 70px;
+    text-align: center;
+    width: 125px;
+    margin-right: 20px;
+}
+
+#SVM{
+    font-weight: 500;
+}
+
+#matriz{
+    margin-left: 100px;
 }

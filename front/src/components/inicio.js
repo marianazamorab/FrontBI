@@ -18,7 +18,7 @@ export default class Inicio extends React.Component {
                 </div>
             </div>
         </nav>
-        <div className="row">
+        <div className="row justify-content-center">
             <div className="card col-5" id="info">
                 <div className="card-body">
                     <h1 className="grande">Información del modelo</h1>
