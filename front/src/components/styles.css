@@ -1,0 +1,59 @@
+#inicio{
+    margin-right: 50px;
+}
+
+.link{
+    color: white;
+}
+
+#medicare{
+    margin-left: 50px;
+}
+
+#navbar{
+    background-color: #162942;
+}
+
+#info{
+    background-color: #b2d3e1;
+    margin-top: 80px;
+    margin-left: 100px;
+    text-align: center;
+    height: 400px;
+}
+
+#elegibilidad{
+    background-color: #b2d3e1;
+    margin-top: 80px;
+    margin-left: 20px;
+    text-align: center;
+    height: 400px;
+}
+
+h1{
+    margin-top: 60px;
+}
+
+img{
+    margin-top:30px;
+}
+
+.option-button{
+    background-color: #162942;
+    margin-bottom: 40px;
+    border-radius: 35px;
+    margin-left: 65px;
+    margin-right: 65px;
+    height: 40px;
+    padding-top: 7px;
+    font-weight: 480;
+
+}
+
+#cardinfo{
+    margin-top: 80px;
+    background-color: #b2d3e1;
+    text-align: center;
+    height: 400px;
+    margin-left: 400px;
+}
