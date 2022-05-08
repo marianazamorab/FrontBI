@@ -31,7 +31,7 @@ const Elegibilidad = () => {
             </nav>
         <div className="container-fluid" id="contenedor">
         <div className = "row">
-        <div className= "col-9">
+        <div className= "col-8">
             <h4> Diagnósticos </h4>
             <div className= "row" id="ladodiag">
                 {diagnosticos.map((diagnostico, index) => (
@@ -58,7 +58,7 @@ const Elegibilidad = () => {
                 ))}
           </div>    
           </div>
-          <div className= "col-3">
+          <div className= "col-4">
               <h4 id="resultados"> Resultados </h4>
           </div>
           </div>

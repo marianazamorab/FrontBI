@@ -59,7 +59,7 @@ img{
 }
 
 #diag{
-    margin-left: 5px;
+    margin-left: 20px;
     margin-right: 10px;
     margin-top: 20px;
 }
@@ -103,12 +103,12 @@ label{
     margin-left: 35px;
 }
 
+h4{
+    padding-top: 20px;
+    margin-left: 60px;
+}
+
 #resultados{
     padding-top: 20px;
     margin-right: 80px;
-}
-
-h4{
-    padding-top: 20px;
-    margin-left: 40px;
 }
