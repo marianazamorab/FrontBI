@@ -5,7 +5,8 @@ import "./styles.css"
 
 const Elegibilidad = () => {
   const [diagnosticos, setDiagnosticos] = useState([{ diagnostico: "" }]);
-  const [resultados, setResultados] = useState([]);
+  const [resultados, setResultados]= useState([]);
+  const results=[];
 
   const agregarDiagnostico = () => {
     setDiagnosticos([...diagnosticos, { diagnostico: "" }]);
@@ -18,7 +19,29 @@ const Elegibilidad = () => {
   };
 
   const getResultados = () => {
-    setResultados([...resultados, { resultado: "" }]);
+  
+    diagnosticos.forEach((item, index)=>{
+
+        const text = document.getElementById("input"+index).value;
+
+        fetch("http://3.69.193.20/api/prediction", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([{"study_and_condition": text}])
+        }).then(res => res.json())
+        .then((result)=> {
+            const llave1= "texto"+index;
+            const llave2= "proba"+index;
+            const res={};
+            res[llave1]= result['response'][0];
+            res[llave2]= result['response'][1];
+            results.push(res);
+            setResultados(results);
+            console.log(resultados);}
+        ).catch(error=> console.log(error.message))
+    }) 
   }
 
   return (
@@ -53,10 +76,9 @@ const Elegibilidad = () => {
                         <h5 className="label"> Diagnostico {index + 1} </h5>
                         <div key={index}>
                           <div className="row justify-content-center">
-                            <input
+                            <input id= {"input"+index}
                               name="diagnostico"
                               type="text"
-                              id="diagnostico"
                               required
                             />
                             {diagnosticos.length > 1 && (
@@ -91,9 +113,11 @@ const Elegibilidad = () => {
           </div>
           <div className="col-3">
             <h4 id="resultados"> Resultados </h4>
-            {resultados.map((diagnostico, index) => (
+            {resultados.map((res, index) => (
                 <div className="card card-resultados" >
                     <h5 id="rdiag"> Resultados diagnóstico {index + 1} </h5>
+                    <p>Elegibilidad: {res["texto"+index]}</p>
+                    <p> Probabilidad: {res["proba"+index]}</p>
                 </div>
             ))}
           </div>
