@@ -125,7 +125,7 @@ label{
     margin-bottom:5px;
 }
 
-#get{
+#get, #clear{
     background-color:#162942;
     border-radius: 35px;
     color: whitesmoke;

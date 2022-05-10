@@ -18,9 +18,15 @@ const Elegibilidad = () => {
     setDiagnosticos(list);
   };
 
-  const getResultados = () => {
-  
-    diagnosticos.forEach((item, index)=>{
+  const getResultados = () => { 
+    let filled = true; 
+    diagnosticos.forEach((item,index)=>{
+      if (document.getElementById("input"+index).value==="") {
+        filled = false;
+      }
+    });
+    if ( filled ){
+      diagnosticos.forEach((item, index)=>{
 
         const text = document.getElementById("input"+index).value;
 
@@ -37,11 +43,40 @@ const Elegibilidad = () => {
             const res={};
             res[llave1]= result['response'][0];
             res[llave2]= result['response'][1];
-            results.push(res);
-            setResultados(results);
-            console.log(resultados);}
-        ).catch(error=> console.log(error.message))
-    }) 
+            const resu = results;
+            resu.push(res);
+            setResultados(resu);
+            return resu
+          }
+        )
+        .then(res => {
+          if (index === diagnosticos.length - 1) {
+            showResults(res);
+          }
+        })
+        .catch(error=> console.log(error.message))
+      })
+    }
+  }
+
+  const showResults = (result) => {
+    const element = document.getElementById("resultados-container");
+    element.innerHTML = "";
+    result.forEach((res, index) => (
+      element.innerHTML += `
+      <div class="card card-resultados" >
+          <h5 id="rdiag"> Resultados diagnóstico ${index + 1} </h5>
+          <p>Elegibilidad: ${res["texto"+index]}</p>
+          <p> Probabilidad: ${res["proba"+index]}</p>
+      </div>
+      `
+    ));
+  };
+
+  const clearAll = () => {
+    document.getElementById("resultados-container").innerHTML = "";
+    setDiagnosticos([{ diagnostico: "" }])
+    document.getElementById("input0").value = "";
   }
 
   return (
@@ -69,12 +104,12 @@ const Elegibilidad = () => {
             <h4 id="diagnosticos"> Diagnósticos </h4>
             <div className="row" id="ladodiag">
               {diagnosticos.map((diagnostico, index) => (
-                <div className="card col-4" id="diag">
+                <div className="card col-4" id="diag" key={index}>
                   <div className="card-body">
                     <form autoComplete="off">
                       <div className="form-field">
                         <h5 className="label"> Diagnostico {index + 1} </h5>
-                        <div key={index}>
+                        <div>
                           <div className="row justify-content-center">
                             <input id= {"input"+index}
                               name="diagnostico"
@@ -109,17 +144,18 @@ const Elegibilidad = () => {
             </div>
           </div>
           <div className= "col-2">
-            <div className="button" onClick={getResultados} id="get"> Click aquí para ver resultados </div>
+            <div className="row">
+              <div className="button" onClick={getResultados} id="get"> Click aquí para ver resultados </div>
+            </div>
+            <div className="row">
+              <div className="button" onClick={clearAll} id="clear"> Limpiar diagnosticos </div>
+            </div>
           </div>
           <div className="col-3">
             <h4 id="resultados"> Resultados </h4>
-            {resultados.map((res, index) => (
-                <div className="card card-resultados" >
-                    <h5 id="rdiag"> Resultados diagnóstico {index + 1} </h5>
-                    <p>Elegibilidad: {res["texto"+index]}</p>
-                    <p> Probabilidad: {res["proba"+index]}</p>
-                </div>
-            ))}
+            <div id="resultados-container">
+
+            </div>
           </div>
         </div>
       </div>
